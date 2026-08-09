@@ -2,5 +2,9 @@
     "title": "イベント",
     "slug": "event",
     "body": "もりのパーティで開催予定/開催されたイベント情報です。",
-    "hasPosition": true
+    "hasPosition": true,
+    "embed": {
+        "url": "https://maps.morino.party/?world=minecraft_overworld&x=5140&z=4007",
+        "title": "イベントの地図"
+    }
 }

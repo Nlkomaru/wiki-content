@@ -2,5 +2,9 @@
     "title": "お店の紹介",
     "slug": "store",
     "body": "お店に関する記事",
-    "hasPosition": true
+    "hasPosition": true,
+    "embed": {
+        "url": "https://maps.morino.party/?world=minecraft_overworld&x=5140&z=4007",
+        "title": "お店の紹介の地図"
+    }
 }

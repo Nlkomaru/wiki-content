@@ -2,5 +2,9 @@
     "title": "建築紹介",
     "slug": "architecture",
     "body": "建築に関する記事",
-    "hasPosition": true
+    "hasPosition": true,
+    "embed": {
+        "url": "https://maps.morino.party/?world=minecraft_overworld&x=5140&z=4007",
+        "title": "建築紹介の地図"
+    }
 }

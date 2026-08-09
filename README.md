@@ -5,7 +5,7 @@ MoripaWiki ([wiki-frontend](https://github.com/Nlkomaru/wiki-frontend)) のコ�
 `content/` を Cloudflare Workers Assets で配信します。
 
 main への push で GitHub Actions が index 群を生成してデプロイします
-(→ <https://wiki-v2-content.nikomaru.workers.dev>)。
+(→ <https://wiki-content.moripa.nikomaru.dev>)。
 
 ## ディレクトリ
 
@@ -28,6 +28,10 @@ content/
 作り直します (`.github/workflows/deploy.yml` が push 時に自動実行)。
 
 ## 配信 URL
+
+配信元は Cloudflare Workers の `wiki-v2-content`。独自ドメイン
+`wiki-content.moripa.nikomaru.dev` を正とし、`wiki-v2-content.nikomaru.workers.dev`
+も移行期間として残している。
 
 | パス | 内容 |
 |---|---|
@@ -112,7 +116,7 @@ GitHub Actions (`.github/workflows/deploy.yml`) が main への push で
 
 wiki-frontend はこのリポジトリを
 
-- 読み取り: `https://wiki-v2-content.nikomaru.workers.dev` (Workers Assets)
+- 読み取り: `https://wiki-content.moripa.nikomaru.dev` (Workers Assets)
 - 書き込み: GitHub API 経由のコミット (`Nlkomaru/wiki-content`)
 
 として参照します。エディタからの保存はこのリポジトリへのコミットとして届き、

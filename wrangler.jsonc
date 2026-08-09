@@ -2,6 +2,14 @@
     "$schema": "node_modules/wrangler/config-schema.json",
     "name": "wiki-v2-content",
     "compatibility_date": "2025-05-20",
+    // 配信ドメイン。独自ドメインを正とし、workers.dev も移行期間として残す
+    "workers_dev": true,
+    "routes": [
+        {
+            "pattern": "wiki-content.moripa.nikomaru.dev",
+            "custom_domain": true
+        }
+    ],
     "assets": {
         "directory": "./content"
     }

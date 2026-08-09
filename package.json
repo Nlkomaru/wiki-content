@@ -1,0 +1,19 @@
+{
+    "name": "wiki-content",
+    "version": "0.1.0",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "generate": "tsx scripts/generate-lists.ts",
+        "dev": "pnpm run generate && wrangler dev",
+        "deploy": "pnpm run generate && wrangler deploy"
+    },
+    "devDependencies": {
+        "@types/node": "^25.0.3",
+        "gray-matter": "^4.0.3",
+        "tsx": "^4.19.4",
+        "typescript": "^5.9.3",
+        "wrangler": "^4.55.0"
+    },
+    "packageManager": "pnpm@11.18.0"
+}

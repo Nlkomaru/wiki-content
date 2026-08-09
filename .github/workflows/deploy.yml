@@ -1,0 +1,33 @@
+# コンテンツリポジトリの push で index 群 (article/<uuid>/info.json,
+# article.json, slug-index.json, categories.json) を生成して deploy する。
+# 生成物は git にコミットしない — Workers Assets にだけ載る。
+#
+# 必要な secret: CLOUDFLARE_API_TOKEN (Workers Scripts:Edit 権限)
+name: Deploy content
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # info.json の履歴マージ (git log) に全履歴が必要
+          fetch-depth: 0
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      # deploy スクリプトが generate → wrangler deploy を順に実行する
+      - run: pnpm run deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}

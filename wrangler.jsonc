@@ -1,0 +1,8 @@
+{
+    "$schema": "node_modules/wrangler/config-schema.json",
+    "name": "wiki-v2-content",
+    "compatibility_date": "2025-05-20",
+    "assets": {
+        "directory": "./content"
+    }
+}

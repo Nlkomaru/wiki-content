@@ -2,9 +2,20 @@
     "title": "街と村",
     "slug": "city",
     "body": "街と村に関する記事です。",
-    "hasPosition": true,
-    "embed": {
-        "url": "https://maps.morino.party/?world=minecraft_overworld&x=5140&z=4007",
-        "title": "街と村の地図"
+    "option": {
+        "x": {
+            "type": "integer",
+            "label": "X座標",
+            "description": "ワールド座標の X。地図で記事の場所を示すのに使う",
+            "placeholder": "1000",
+            "required": true
+        },
+        "y": {
+            "type": "integer",
+            "label": "Z座標",
+            "description": "ワールド座標の Z。地図で記事の場所を示すのに使う",
+            "placeholder": "2000",
+            "required": true
+        }
     }
 }

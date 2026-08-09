@@ -2,5 +2,20 @@
     "title": "イベント",
     "slug": "event",
     "body": "もりのパーティで開催予定/開催されたイベント情報です。",
-    "hasPosition": true
+    "option": {
+        "x": {
+            "type": "integer",
+            "label": "X座標",
+            "description": "ワールド座標の X。地図で記事の場所を示すのに使う",
+            "placeholder": "1000",
+            "required": true
+        },
+        "y": {
+            "type": "integer",
+            "label": "Z座標",
+            "description": "ワールド座標の Z。地図で記事の場所を示すのに使う",
+            "placeholder": "2000",
+            "required": true
+        }
+    }
 }

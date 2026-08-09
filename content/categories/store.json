@@ -2,5 +2,20 @@
     "title": "お店の紹介",
     "slug": "store",
     "body": "お店に関する記事",
-    "hasPosition": true
+    "option": {
+        "x": {
+            "type": "integer",
+            "label": "X座標",
+            "description": "ワールド座標の X。地図で記事の場所を示すのに使う",
+            "placeholder": "1000",
+            "required": true
+        },
+        "y": {
+            "type": "integer",
+            "label": "Z座標",
+            "description": "ワールド座標の Z。地図で記事の場所を示すのに使う",
+            "placeholder": "2000",
+            "required": true
+        }
+    }
 }

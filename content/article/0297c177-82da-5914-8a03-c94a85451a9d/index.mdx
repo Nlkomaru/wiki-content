@@ -1,0 +1,91 @@
+---
+title: 軽量化MODのすゝめ
+slug: performanceup
+uuid: 0297c177-82da-5914-8a03-c94a85451a9d
+category: plugins
+description: Minecraftを軽量化する方法を君に伝授するぜ！
+modified:
+  - date: 2020-11-06T03:36:44.269Z
+---
+
+# はじめに
+
+もりのパーティ！の都市部は非常に重く、ノートPCだとまともにプレイ出来ない可能性もあります。そんな方の為にMinecraftを劇的に軽量化する方法をここにまとめます。
+
+# Sodiumの導入
+
+SodiumはMinecraftの軽量化MODです。代表的な軽量化MODとしてOptifineを知っている人は多いと思いますが、そのOptifineよりもとても軽いので非常におすすめです。なお、Sodiumの公式配布サイトに
+
+> Sodium and Optifine are incompatible with one another. You must pick one.
+
+と書かれている通り、Optifineとは互換性がないので、Optifineを既に使用している場合はそちらを無効にする必要があります（無効にしなければ起動時にMinecraftがクラッシュする）。
+
+## fabricのインストール
+
+Sodiumの導入にはfabricが必須です。fabricは様々なMODの導入に必要な前提MODです。詳しい説明は割愛します。
+
+fabric公式サイト(<https://fabricmc.net/use/>)からfabricインストーラーをダウンロードします。
+
+<Image imageId="14c5a1ba-0327-52c6-8700-e56b03c49eab" blurHash64="VUlTNkpSa1diZC07LTtuI29KYWUuQW9nTV9hfl4sa0RSamF6" width="801" height="767" alt="" />
+
+ダウンロードしたファイルを左クリックで立ち上げるとセットアップが始まります。
+
+<Image imageId="fe1aabb6-8d17-5790-a51e-76ab81ae3776" blurHash64="VUNQR1RbLW8uVC44MDBWc1ZYUiswMFNoT0ZWQDB6WG1WWGle" width="373" height="233" alt="" />
+
+fabricをインストールしたいバージョンを選択して \[インストール] をクリックするとインストールがすぐに完了します。
+
+### fabricの入ったMinecraftを起動する
+
+fabricのインストールが完了したらMinecraftのランチャーを起動します。
+
+<Image imageId="92646eed-9953-59f0-abc7-6a0f96bcdf19" blurHash64="VTE2a2tvTCowMC1YejMua1RlIyNHUiUzXTpBLn5xTWN0Xkky" width="1000" height="630" alt="" />
+
+ランチャーを起動するとfabricの起動構成が自動的に作成されているので選択して\[プレイ]をクリックします。
+
+※既にforgeMODを導入した経験のある方はfabricMODと競合するのでゲームディレクトリを必ず分けましょう。分け方は各々で調べるか筆者のUnitarou/Namiuに聞いてください。気が向いたらゲームディレクトリの分け方もWikiで解説します。
+
+<Image imageId="f1001f8e-4188-5373-9905-fecc82920f89" blurHash64="VTE4TkNCfE4wMFtUX00tVzAxbnkjNnJFXix4dH5Ed2ZEJG4l" width="1920" height="1080" alt="" />
+
+Minecraftのタイトル画面で左下に Minecraft バージョン/Fabric と表示されていればおーけーです。
+
+## Sodiumのインストール
+
+fabricの導入が完了したら早速Sodiumをインストールしましょう。
+
+Sodium配布ページ(<https://www.curseforge.com/minecraft/mc-mods/sodium>)からSodiumをダウンロードします。
+
+記事の執筆時点で1.16.3対応版が最新となっていましたが、1.16.4でも使用できることを確認済みです。
+
+<Image imageId="3a4c9b0c-f473-5f45-a4c5-05f1066bb9d1" blurHash64="VXROZFhhRTElTXh0P3clTU1fYWVOc291W0ZiY0UzUip0NmJJ" width="1221" height="939" alt="" />
+
+ダウンロードしたファイルをmodsフォルダに入れれば完了です。
+
+modsフォルダの簡単な探し方はMinecraftを起動して \[設定] から\[リソースパック] を開き、\[パックフォルダーを開く] をクリックする事です。
+
+<Image imageId="502f8038-e4b4-50e9-aedc-2a86de747f9d" blurHash64="VTE0VXlqLW9JQnQ2SVRvTSUzeHN+VnQ2SVZvTG9mV1ZXVVdW" width="1920" height="1080" alt="" />
+
+クリックすると(WindowsPCの話ですが)エクスプローラーが立ち上がるのでそこから左上の↑矢印をクリックします。
+
+<Image imageId="357a2036-1581-54ce-8385-9d418f4dc89d" blurHash64="VTE1WC45eHV0Uj9aXzIlSnhzczp0VnQxJUpXRiVNTjNXWnhz" width="901" height="681" alt="" />
+
+modsと書かれたフォルダが出てくる筈なのでクリックして開いたらそのフォルダ内にSodiumのファイルを入れれば完了です😘
+
+Minecraftを再起動すればSodiumが導入されているのであとはビデオ設定からお好みの設定に変更しましょう。
+
+<Image imageId="8c83a67f-de5b-5300-9385-82910a404e15" blurHash64="VTE1aDl7MFdFOX5SflJFOGEjeHJJYiR+JUlFND9FUjpSbnQz" width="854" height="480" alt="" />
+
+ついでに特に重要な設定を３つご紹介します。設定を上げれば上げるほどパソコンに掛かる負荷が大きくなる為、パソコンの寿命や電気代を気にするのであれば程々にしましょう。
+
+View Distance  - 描画距離。プレイヤーから見える範囲をチャンク単位で変更する。
+
+V-SYNC - 垂直同期。モニターのリフレッシュレートに合わせてフレームレートを制限する。
+
+FPS Limit - フレームレート制限。値が高ければ高い程画面がヌルヌル動くようになる。
+
+# おわり
+
+お疲れさまでした！
+
+ここまででSodiumの導入は完了です！！
+
+その他のMODもmodsフォルダに入れるだけでインストール出来るので、ぜひ[こちら](https://wiki.morino.party/recommendedmods)のページチェックしてみてくださいね

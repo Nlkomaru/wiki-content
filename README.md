@@ -82,6 +82,22 @@ Mojang API で UUID を解決できたものだけ `player` を持ちます (解
 `player` を省略)。`generate-lists.ts` は `player` が無いエントリを `player: null`
 として扱います。
 
+### `editors` (manifest の生成物)
+
+`article.json` の各エントリは、`info.json` の `history` をプレイヤーごとに畳んだ
+`editors` を持ちます。
+
+```json
+"editors": [
+  { "player": "85c6a9e3-…", "edits": 3, "lastEditedAt": "2026-08-09T15:13:17.000Z" }
+]
+```
+
+`player` が解決できない履歴 (移行前の表示名のみの記録、`"<name> (<uuid>)"` 規約で
+ないコミット) は含みません。wiki-frontend のダッシュボードが「自分が編集に
+関わった記事」を出すのに使うため、記事数ぶんの `info.json` を引かなくて済むよう
+manifest 側にも載せています。
+
 ## ローカル開発
 
 ```sh

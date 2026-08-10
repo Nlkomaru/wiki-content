@@ -36,6 +36,27 @@ interface ArticleInfo {
     history: HistoryEntry[];
 }
 
+/** 記事一件の編集者一人分の集計。`history` を畳んだもの。 */
+interface EditorSummary {
+    /** Minecraft UUID。 */
+    player: string;
+    /** その記事に対する編集回数。 */
+    edits: number;
+    /** 最後にその記事を編集した日時。 */
+    lastEditedAt: string;
+}
+
+/**
+ * manifest (`article.json`) の 1 エントリ。`history` の代わりに、そこから
+ * 畳んだ `editors` を持つ。
+ *
+ * 「あるプレイヤーが編集した記事」を引くのに info.json を記事数ぶん
+ * 取りに行かなくて済むよう、編集者だけは manifest 側にも載せている。
+ */
+type ArticleSummary = Omit<ArticleInfo, "history"> & {
+    editors: EditorSummary[];
+};
+
 function toUrlSlug(str: string): string {
     return encodeURIComponent(
         str
@@ -131,6 +152,36 @@ async function gitHistory(articleDirName: string): Promise<HistoryEntry[]> {
     }
 }
 
+/**
+ * 履歴を編集者ごとに畳む。最終編集が新しい順。
+ *
+ * `player` が null のエントリ (移行前の履歴でプレイヤーを解決できなかったもの、
+ * コミッター名が `"<name> (<uuid>)"` 規約でないコミット) は誰の編集か辿れないため
+ * 除外する。
+ */
+function summarizeEditors(history: HistoryEntry[]): EditorSummary[] {
+    const byPlayer = new Map<string, EditorSummary>();
+    for (const entry of history) {
+        if (!entry.player) continue;
+        const current = byPlayer.get(entry.player);
+        if (current) {
+            current.edits += 1;
+            if (entry.date > current.lastEditedAt) {
+                current.lastEditedAt = entry.date;
+            }
+        } else {
+            byPlayer.set(entry.player, {
+                player: entry.player,
+                edits: 1,
+                lastEditedAt: entry.date,
+            });
+        }
+    }
+    return [...byPlayer.values()].sort((a, b) =>
+        b.lastEditedAt.localeCompare(a.lastEditedAt),
+    );
+}
+
 function readThumbnail(
     data: Record<string, unknown>,
 ): ArticleInfo["thumbnail"] {
@@ -151,14 +202,15 @@ function readThumbnail(
  * Scan `content/article/<uuid>/index.mdx` and emit:
  *   - `article/<uuid>/info.json` — per-article metadata with the merged
  *     history (frontmatter `modified` + git commits) baked in
- *   - `article.json`  — manifest of every article (info minus `history`)
+ *   - `article.json`  — manifest of every article (info minus `history`, plus
+ *     `editors` folded out of it)
  *   - `slug-index.json` — slug → uuid map, so `getPostBySlug` can resolve a
  *     slug without scanning the manifest
  */
 async function generateArticleLists() {
     await ensureDir(ARTICLE_DIR);
     const entries = await fs.readdir(ARTICLE_DIR, { withFileTypes: true });
-    const manifest: Array<Omit<ArticleInfo, "history">> = [];
+    const manifest: ArticleSummary[] = [];
     const slugIndex: Record<string, string> = {};
     for (const entry of entries) {
         if (!entry.isDirectory()) continue;
@@ -197,7 +249,7 @@ async function generateArticleLists() {
 
         await writeJson(path.join(ARTICLE_DIR, entry.name, "info.json"), info);
         const { history: _history, ...summary } = info;
-        manifest.push(summary);
+        manifest.push({ ...summary, editors: summarizeEditors(history) });
         slugIndex[info.slug] = info.uuid;
     }
     await writeJson(path.join(CONTENT_DIR, "article.json"), manifest);

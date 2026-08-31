@@ -10,7 +10,12 @@
             "custom_domain": true
         }
     ],
+    "main": "src/index.ts",
     "assets": {
-        "directory": "./content"
+        "directory": "./content",
+        "binding": "ASSETS",
+        // draft 遮断が必要な記事パスだけ worker を通す。manifest / カテゴリは
+        // 従来どおり asset-first で配信する。
+        "run_worker_first": ["/article/*"]
     }
 }

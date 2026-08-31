@@ -2,7 +2,9 @@
 
 MoripaWiki ([wiki-frontend](https://github.com/Nlkomaru/wiki-frontend)) のコンテンツリポジトリ。
 [hagaki のコンテンツフォーマット](https://github.com/Nlkomaru/hagaki/blob/main/sample/README.md)に従い、
-`content/` を Cloudflare Workers Assets で配信します。
+`content/` を Cloudflare Workers Assets で配信します。コードは持たず、
+生成 (`hagaki generate`) と配信 worker (`hagaki/content-worker`) は
+[hagaki](https://github.com/Nlkomaru/hagaki) をライブラリとして使います。
 
 main への push で GitHub Actions が index 群を生成してデプロイします
 (→ <https://wiki-content.moripa.nikomaru.dev>)。
@@ -26,12 +28,18 @@ content/
 生成物 (`*.json` のうち `article.json` / `slug-index.json` / `categories.json` /
 `article/*/info.json`) は git 管理外です。デプロイ前に必ず `pnpm generate` で
 作り直します (`.github/workflows/deploy.yml` が push 時に自動実行)。
+生成は hagaki の CLI (`pnpm generate` = `hagaki generate`) が行い、
+`draft: true` の記事は `article.json` / `slug-index.json` に載りません。
 
 ## 配信 URL
 
 配信元は Cloudflare Workers の `wiki-v2-content`。独自ドメイン
 `wiki-content.moripa.nikomaru.dev` を正とし、`wiki-v2-content.nikomaru.workers.dev`
 も移行期間として残している。
+
+`/article/*` は `run_worker_first` で `hagaki/content-worker` の Hono app
+(`src/index.ts`) を通り、`draft: true` の記事 (`index.mdx` / `info.json` /
+`assets/*`) は 404 になる。manifest 類はそのまま静的配信。
 
 | パス | 内容 |
 |---|---|
@@ -79,7 +87,7 @@ modified:
 
 を入れています。旧 wiki は編集者を Minecraft の**表示名**でしか記録していないため、
 Mojang API で UUID を解決できたものだけ `player` を持ちます (解決できないものは
-`player` を省略)。`generate-lists.ts` は `player` が無いエントリを `player: null`
+`player` を省略)。`hagaki generate` は `player` が無いエントリを `player: null`
 として扱います。
 
 ### `editors` (manifest の生成物)

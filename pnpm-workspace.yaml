@@ -1,3 +1,5 @@
 allowBuilds:
   esbuild: true
   workerd: true
+  # Run hagaki's prepare script (tsup) so the github: dependency ships dist/.
+  "hagaki@git+https://github.com/Nlkomaru/hagaki.git": true

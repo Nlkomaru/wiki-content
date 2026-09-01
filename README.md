@@ -31,6 +31,11 @@ content/
 生成は hagaki の CLI (`pnpm generate` = `hagaki generate`) が行い、
 `draft: true` の記事は `article.json` / `slug-index.json` に載りません。
 
+> [!NOTE]
+> hagaki は `github:Nlkomaru/hagaki` 依存で、lockfile がコミット SHA を
+> 固定します。hagaki 側の更新を反映するには `pnpm update hagaki` を実行して
+> lockfile をコミットしてください。
+
 ## 配信 URL
 
 配信元は Cloudflare Workers の `wiki-v2-content`。独自ドメイン

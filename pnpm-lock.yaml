@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       hagaki:
-        specifier: github:Nlkomaru/hagaki
-        version: https://codeload.github.com/Nlkomaru/hagaki/tar.gz/b7aaa9697dd562c5931c6daada5a78d0171d0d79(@mdxeditor/gurx@1.2.4(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(supports-color@10.2.2)
+        specifier: github:Nlkomaru/hagaki#dist
+        version: https://codeload.github.com/Nlkomaru/hagaki/tar.gz/bcad026701a2dd52e655214848801fcc6db93ea6(@mdxeditor/gurx@1.2.4(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(supports-color@10.2.2)
     devDependencies:
       '@types/node':
         specifier: ^25.0.3
@@ -692,8 +692,8 @@ packages:
     resolution: {integrity: sha512-5v6yZd4JK3eMI3FqqCouswVqwugaA9r4dNZB1wwcmrD02QkV5H0y7XBQW8QwQqEaZY1pM9aqORSORhJRdNK44Q==}
     engines: {node: '>=6.0'}
 
-  hagaki@https://codeload.github.com/Nlkomaru/hagaki/tar.gz/b7aaa9697dd562c5931c6daada5a78d0171d0d79:
-    resolution: {gitHosted: true, tarball: https://codeload.github.com/Nlkomaru/hagaki/tar.gz/b7aaa9697dd562c5931c6daada5a78d0171d0d79}
+  hagaki@https://codeload.github.com/Nlkomaru/hagaki/tar.gz/bcad026701a2dd52e655214848801fcc6db93ea6:
+    resolution: {gitHosted: true, integrity: sha512-zqQfdkIBlmenQeGwa4LBvVO1PcPL8Ze3OmYOpSXzfnpUxph1SCcJDKRHi3ZRviswD6cOrGq1KLb+ijVkspMiFQ==, tarball: https://codeload.github.com/Nlkomaru/hagaki/tar.gz/bcad026701a2dd52e655214848801fcc6db93ea6}
     version: 0.1.0
     engines: {node: '>=18'}
     hasBin: true
@@ -1578,7 +1578,7 @@ snapshots:
       section-matter: 1.0.0
       strip-bom-string: 1.0.0
 
-  hagaki@https://codeload.github.com/Nlkomaru/hagaki/tar.gz/b7aaa9697dd562c5931c6daada5a78d0171d0d79(@mdxeditor/gurx@1.2.4(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(supports-color@10.2.2):
+  hagaki@https://codeload.github.com/Nlkomaru/hagaki/tar.gz/bcad026701a2dd52e655214848801fcc6db93ea6(@mdxeditor/gurx@1.2.4(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(supports-color@10.2.2):
     dependencies:
       '@jsquash/avif': 2.1.1
       '@mdxeditor/gurx': 1.2.4(react-dom@19.2.8(react@19.2.8))(react@19.2.8)

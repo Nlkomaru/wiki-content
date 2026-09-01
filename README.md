@@ -32,9 +32,10 @@ content/
 `draft: true` の記事は `article.json` / `slug-index.json` に載りません。
 
 > [!NOTE]
-> hagaki は `github:Nlkomaru/hagaki` 依存で、lockfile がコミット SHA を
-> 固定します。hagaki 側の更新を反映するには `pnpm update hagaki` を実行して
-> lockfile をコミットしてください。
+> hagaki は `github:Nlkomaru/hagaki#dist`（hagaki の CI が main への push ごとに
+> 発行するビルド済みブランチ）への依存で、lockfile がそのコミット SHA を
+> 固定します。インストール時にビルドは走りません。hagaki 側の更新を反映する
+> には `pnpm update hagaki` を実行して lockfile をコミットしてください。
 
 ## 配信 URL
 
